@@ -1,0 +1,40 @@
+adminSecret:
+  create: true
+  name: keycloak-admin-secret
+  adminUser: admin
+  adminPassword: Subedi10!
+
+keycloak:
+  enabled: true
+
+  auth:
+    existingSecret: keycloak-admin-secret
+
+  service:
+    type: ClusterIP
+    ports:
+      http: 8080
+
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hostname: keycloak.lab
+    annotations: {}
+    tls: true
+    extraTls:
+      - hosts:
+          - keycloak.lab
+        secretName: keycloak-tls
+
+  postgresql:
+    enabled: true
+    auth:
+      postgresPassword: Subedi10!
+      username: keycloak
+      password: Subedi10!
+      database: keycloak_db
+    primary:
+      persistence:
+        enabled: true
+        size: 8Gi
+        storageClass: ""

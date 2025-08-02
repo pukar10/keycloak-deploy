@@ -1,0 +1,21 @@
+apiVersion: v2
+name: keycloak-deploy
+description: >
+  Deploys Bitnami Keycloak with optional embedded PostgreSQL instance. 
+  Brings its own admin credentials secret. 
+  Expects an existing NGINX Ingress Controller (or any other ingress-class) and standard Internet access.
+
+# Upstream Keycloak version
+appVersion: "24.0.4"
+# Chart version – Bump when you change anything in templates or values
+version: 1.0.0
+type: application
+
+# ⬇️  Sub‑chart dependency – pulls Bitnami’s chart automatically
+# Pin to a specific minor to avoid surprises.
+dependencies:
+  - name: keycloak
+    version: 24.8.1
+    repository: https://charts.bitnami.com/bitnami
+    # user can set keycloak.enabled=false to deploy only the Secret, etc.
+    condition: keycloak.enabled
