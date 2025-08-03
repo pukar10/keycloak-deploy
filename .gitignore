@@ -1,1 +1,4 @@
 charts/
+*.tar
+*.tar.gz
+*.tgz
