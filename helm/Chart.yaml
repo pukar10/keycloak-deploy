@@ -3,7 +3,7 @@ name: keycloak-deploy
 type: application
 
 # Follow Semantic Versioning (https://semver.org/)
-version: 1.0.0
+version: 1.0.0-24.0.4
 
 # Version of application being deployed
 appVersion: "24.0.4"
